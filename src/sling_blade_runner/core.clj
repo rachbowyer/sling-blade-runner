@@ -127,7 +127,7 @@
         result
         (recur [child (node-distances child)] (conj result node))))))
 
-(defn- format-oath [path]
+(defn- format-path [path]
   (str/join " " (map #(str "\"" (:name %) "\"") path)))
 
 (defn calculate-longest-title []
@@ -147,7 +147,7 @@
     (println "Post order: "     (count post-order))
     (println)
 
-    (println (format-oath longest-path))
+    (println (format-path longest-path))
     (println "Path length: " (count longest-path))))
 
 
