@@ -21,10 +21,11 @@ ITA was known for using Common Lisp and their eccentric recruitment campaign. IT
 puzzles and invite people who had solved them to apply for a role at ITA. ITA had two main types of 
 roles: Engineering and Computer Science. ITA posted different puzzles for the two types of roles reflecting
 the different characteristics of the job. The Engineering puzzles are uninteresting but the Computer Science
-puzzles are very entertaining. ITA were some of the smartest people in the room, so it was no surprise
-when Google gobbled them up and ended their approach to recruitment; the puzzles though remain.
+puzzles are very entertaining. 
 
-One of the puzzles is "Sling Blade Runner", which ITA used between March 2007 and September 2008.
+ITA were some of the smartest people in the room, so it was no surprise when Google gobbled them up and ended 
+their approach to recruitment; the puzzles though remain. One of the puzzles is "Sling Blade Runner", which ITA 
+used between March 2007 and September 2008.
 
 The problem can be represented as a direct graph where the vertexes of the graph are the movies and the 
 direct edges represent an overlap between two movies. Finding the longest simple path (a path that does
