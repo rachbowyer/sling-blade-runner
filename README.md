@@ -23,7 +23,7 @@ roles: Engineering and Computer Science. ITA posted different puzzles for the tw
 the different characteristics of the job. The Engineering puzzles are uninteresting but the Computer Science
 puzzles are very entertaining. 
 
-ITA were some of the smartest people in the room, so it was no surprise when Google gobbled them up and ended 
+ITA were some of the smartest people around, so it was no surprise when Google gobbled them up and ended 
 their approach to recruitment; the puzzles though remain. One of the puzzles is "Sling Blade Runner", which ITA 
 used between March 2007 and September 2008.
 
