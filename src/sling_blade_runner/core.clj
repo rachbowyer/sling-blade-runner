@@ -56,21 +56,25 @@
 
 (defn- get-cycles
   [graph]
-  (let [visited (atom #{})
-        cycles  (atom [])]
+  (letfn [(explore [node path-set path {:keys [visited cycles] :as state}]
+            (cond
+              (path-set node)
+              {:visited visited, :cycles (conj cycles [(first path) node])}
 
-    (letfn [(explore [node path-set path]
-              (if (path-set node)
-                (swap! cycles conj [(first path) node])
-                (when-not (@visited node)
-                  (swap! visited conj node)
-                  (doseq [child (graph node)]
-                    (explore child (conj path-set node) (cons node path))))))]
+              (not (visited node))
+              (reduce (fn [state child]
+                        (explore child (conj path-set node) (cons node path) state))
+                {:visited (conj visited node), :cycles cycles}
+                (graph node))
 
-      (doseq [node (keys graph)]
-        (explore node #{} '())))
+              :else
+              state))]
+    (->> graph
+         keys
+         (reduce (fn [state node] (explore node #{} '() state))
+                 {:visited #{}, :cycles []})
+         :cycles)))
 
-    @cycles))
 
 (defn- break-cycles [graph cycles]
   (reduce
@@ -82,20 +86,17 @@
   (->> graph vals (map count) (reduce +)))
 
 (defn- get-post-order [dag]
-  (let [visited (atom #{})
-        order   (atom [])]
-
-    (letfn [(explore [node]
-              (when-not (@visited node)
-                (swap! visited conj node)
-                (doseq [child (dag node)]
-                  (explore child))
-                (swap! order conj node)))]
-
-      (doseq [node (keys dag)]
-        (explore node)))
-
-    @order))
+  (letfn [(explore [{:keys [visited] :as state} node]
+            (if (visited node)
+              state
+              (let [new-state (reduce explore
+                                      (update state :visited conj node)
+                                      (dag node))]
+                (update new-state :order conj node))))]
+    (->> dag
+         keys
+         (reduce explore {:visited #{}, :order []})
+         :order)))
 
 (defn- get-distances [dag post-order]
   (reduce
@@ -129,7 +130,7 @@
 (defn- format-oath [path]
   (str/join " " (map #(str "\"" (:name %) "\"") path)))
 
-(defn do-stuff-suffix-tree []
+(defn calculate-longest-title []
   (let [movies        (->> (read-movies) parse-movies create-movies)
         suffix-tree   (create-complete-suffix-tree movies)
         graph         (create-graph suffix-tree movies)
@@ -148,5 +149,13 @@
 
     (println (format-oath longest-path))
     (println "Path length: " (count longest-path))))
+
+
+(defn -main []
+  (let [start (System/currentTimeMillis)
+        _     (calculate-longest-title)
+        end   (System/currentTimeMillis)]
+    (println "Time taken: " (- end start) "msecs")))
+
 
 
