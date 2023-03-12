@@ -51,7 +51,7 @@ Furthermore, cycles can be found in linear time as well. This hints at one appro
 break the cycles in the graph to create a DAG and then find the longest path.
 
 This leads to a beautiful purely functional linear algorithm implemented in under 160 lines of Clojure 
-that finds a 247 movie chain solution to the problem and runs in under 100 milliseconds on my Mac M1. 
+that finds a 241 movie chain solution to the problem and runs in under 100 milliseconds on my Mac M1. 
 I suspect ITA were looking for a longer chain and a longer running time, but once I had figured out 
 the approach, I had to implement it!
 
