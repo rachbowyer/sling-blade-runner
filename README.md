@@ -1,6 +1,6 @@
 # sling-blade-runner
 
-<img src="https://github.com/rachbowyer/sling-blade-runner/blob/main/example-ita-ad.png" alt="ITA Software Recruitment Ad" width="250"/>
+<img src="https://github.com/rachbowyer/sling-blade-runner/blob/main/sling-blade-runner.gif" alt="ITA Software Recruitment Ad" width="250"/>
 
 _"How long a chain of overlapping movie titles, like Sling Blade Runner, can you find?"_
 
